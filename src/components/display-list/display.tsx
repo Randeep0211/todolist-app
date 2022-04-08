@@ -1,41 +1,29 @@
-import React from "react";
-import styles from "./display.module.css";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import React from 'react';
+import styles from './display.module.css';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { TodoListItem } from '../../types';
 
 interface DisplayListProps {
-  Task: string;
-  id: string;
-  onDelete: () => void;
+  todoItem: TodoListItem;
+  onDelete: (id: string) => void;
+  onUpdate: (id: string) => void;
 }
 
-const DisplayList: React.FC<DisplayListProps> = (props) => {
-  let navigate = useNavigate();
-
-  const deleteData = async () => {
-    try {
-      const result = await axios.delete(
-        `http://localhost:8000/Delete/${props.id}`
-      );
-      props.onDelete();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+const DisplayList: React.FC<DisplayListProps> = ({
+  todoItem,
+  onDelete,
+  onUpdate,
+}: DisplayListProps) => {
   return (
     <div>
       <div className={styles.container}>
-        <p>{props.Task}</p>
-        <button
-          type="submit"
-          onClick={() => {
-            navigate(`/update/${props.id}`);
-          }}
-        >
+        <p>{todoItem.task}</p>
+        <button type="button" onClick={() => onUpdate(todoItem._id)}>
           Update
         </button>
-        <button type="submit" onClick={deleteData}>
+        <button type="button" onClick={() => onDelete(todoItem._id)}>
           Delete
         </button>
       </div>

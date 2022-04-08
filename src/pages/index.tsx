@@ -1,7 +1,7 @@
-import React from "react";
-import AddTask from "../components/todo-list";
-import UpdateList from "../components/update-list";
-import { Routes, Route } from "react-router-dom";
+import React from 'react';
+import AddTask from '../components/todo-list';
+import UpdateList from '../components/update-list';
+import { Routes, Route } from 'react-router-dom';
 
 function Homepage() {
   return (

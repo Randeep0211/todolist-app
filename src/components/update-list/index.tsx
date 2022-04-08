@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 interface UpdateListProps {
   Task: string;
@@ -8,7 +8,7 @@ interface UpdateListProps {
 }
 
 function UpdateList() {
-  const [Task, setTask] = useState("");
+  const [Task, setTask] = useState('');
 
   const response = useParams();
   const id = response.id;
